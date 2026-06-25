@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>DineAI - Find Your Perfect Restaurant</title>
+  <meta name="description" content="DineAI uses cutting-edge AI to curate the perfect restaurant recommendations tailored to your taste, budget, and location."/>
+  <meta name="theme-color" content="#0F0F0F"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ============================================================ -->
+  <!-- TOP NAV                                                      -->
+  <!-- ============================================================ -->
+  <nav id="top-nav" class="top-nav">
+    <div class="nav-inner">
+      <a href="#" class="brand" id="brand-logo" aria-label="DineAI home">DineAI</a>
+      <div class="nav-links hidden-mobile">
+        <a href="#" class="nav-link active" id="nav-explore" data-view="home">Explore</a>
+        <a href="#" class="nav-link" id="nav-concierge" data-view="preferences">Concierge</a>
+        <a href="#" class="nav-link" id="nav-bookings" data-view="results">Bookings</a>
+      </div>
+      <button class="btn-pill" id="nav-cta" data-view="preferences">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- VIEW 1: HOME                                                 -->
+  <!-- ============================================================ -->
+  <div id="view-home" class="view active">
+    <main class="hero-section">
+      <!-- Ambient particles canvas -->
+      <div id="particles-canvas-wrap" aria-hidden="true"></div>
+
+      <!-- Ambient light blobs -->
+      <div class="ambient-blob blob-amber" aria-hidden="true"></div>
+      <div class="ambient-blob blob-teal" aria-hidden="true"></div>
+
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="material-symbols-outlined">auto_awesome</span>
+          <span>AI-Powered Restaurant Discovery</span>
+        </div>
+        <h1 class="hero-title">Find Your Perfect Restaurant,<br class="break-md"/> Powered by AI</h1>
+        <p class="hero-subtitle">Tell us what you're craving — our AI concierge does the rest. From hidden gems to celebrated kitchens, experience dining tailored exclusively to your palate.</p>
+
+        <div class="hero-search-bar glass-panel">
+          <span class="material-symbols-outlined search-icon">restaurant</span>
+          <input
+            id="hero-search-input"
+            class="search-input"
+            type="text"
+            placeholder="I'm craving spicy North Indian cuisine in Bangalore..."
+            aria-label="Search for restaurants"
+          />
+          <button class="btn-search" id="hero-search-btn" aria-label="Get AI recommendations">
+            <span class="material-symbols-outlined">auto_awesome</span>
+            <span class="btn-search-text">Get Recommendations</span>
+          </button>
+        </div>
+
+        <!-- Stats row -->
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">1,200+</span>
+            <span class="stat-label">Restaurants</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Cities</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number">AI</span>
+            <span class="stat-label">Powered</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="brand footer-brand">DineAI</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Press</a>
+        </div>
+        <div class="footer-copy">© 2024 DineAI Gastronomy. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- VIEW 2: PREFERENCES FORM                                     -->
+  <!-- ============================================================ -->
+  <div id="view-preferences" class="view">
+    <main class="pref-main">
+      <!-- Ambient blobs -->
+      <div class="ambient-blob blob-amber pref-blob-1" aria-hidden="true"></div>
+
+      <div class="glass-card pref-card">
+        <!-- Decorative glow -->
+        <div class="pref-card-glow" aria-hidden="true"></div>
+
+        <div class="pref-header">
+          <h1 class="pref-title">Design Your Experience</h1>
+          <p class="pref-subtitle">Let our AI concierge curate the perfect dining atmosphere for you.</p>
+        </div>
+
+        <form id="preferenceForm" class="pref-form" novalidate>
+
+          <!-- LOCATION -->
+          <div class="form-group">
+            <label class="form-label" for="location">Location</label>
+            <div class="select-wrapper">
+              <span class="material-symbols-outlined input-icon">location_on</span>
+              <select id="location" name="location" class="form-select" required aria-required="true">
+                <option value="" disabled selected>Select your city</option>
+                <optgroup label="Popular Cities">
+                  <option value="bangalore">Bangalore</option>
+                  <option value="delhi">Delhi</option>
+                  <option value="mumbai">Mumbai</option>
+                  <option value="hyderabad">Hyderabad</option>
+                  <option value="chennai">Chennai</option>
+                  <option value="kolkata">Kolkata</option>
+                  <option value="pune">Pune</option>
+                  <option value="ahmedabad">Ahmedabad</option>
+                </optgroup>
+                <optgroup label="Other Cities">
+                  <option value="jaipur">Jaipur</option>
+                  <option value="chandigarh">Chandigarh</option>
+                  <option value="lucknow">Lucknow</option>
+                  <option value="kochi">Kochi</option>
+                  <option value="goa">Goa</option>
+                  <option value="indore">Indore</option>
+                  <option value="bhopal">Bhopal</option>
+                  <option value="nagpur">Nagpur</option>
+                  <option value="coimbatore">Coimbatore</option>
+                  <option value="visakhapatnam">Visakhapatnam</option>
+                </optgroup>
+              </select>
+              <span class="material-symbols-outlined select-chevron" aria-hidden="true">expand_more</span>
+            </div>
+          </div>
+
+          <!-- BUDGET TOGGLE -->
+          <div class="form-group">
+            <label class="form-label">Budget Preference</label>
+            <div class="budget-toggle" role="group" aria-label="Budget preference">
+              <div class="budget-indicator" id="budgetIndicator" aria-hidden="true"></div>
+              <button class="budget-btn active" type="button" data-budget="low" id="budget-low" aria-pressed="true">
+                <span class="material-symbols-outlined budget-icon">savings</span>
+                Low
+              </button>
+              <button class="budget-btn" type="button" data-budget="medium" id="budget-medium" aria-pressed="false">
+                <span class="material-symbols-outlined budget-icon">account_balance_wallet</span>
+                Medium
+              </button>
+              <button class="budget-btn" type="button" data-budget="high" id="budget-high" aria-pressed="false">
+                <span class="material-symbols-outlined budget-icon">diamond</span>
+                High
+              </button>
+            </div>
+            <input type="hidden" id="budget" name="budget" value="low"/>
+          </div>
+
+          <!-- CUISINE CHIPS -->
+          <div class="form-group">
+            <label class="form-label">Cuisine Vibes <span class="form-label-optional">(optional)</span></label>
+            <div class="cuisine-chips" role="group" aria-label="Cuisine preferences">
+              <button class="chip" type="button" data-cuisine="north indian" aria-pressed="false">North Indian</button>
+              <button class="chip" type="button" data-cuisine="south indian" aria-pressed="false">South Indian</button>
+              <button class="chip" type="button" data-cuisine="chinese" aria-pressed="false">Chinese</button>
+              <button class="chip" type="button" data-cuisine="italian" aria-pressed="false">Italian</button>
+              <button class="chip" type="button" data-cuisine="japanese" aria-pressed="false">Japanese</button>
+              <button class="chip" type="button" data-cuisine="continental" aria-pressed="false">Continental</button>
+              <button class="chip" type="button" data-cuisine="mediterranean" aria-pressed="false">Mediterranean</button>
+              <button class="chip" type="button" data-cuisine="fusion" aria-pressed="false">Fusion</button>
+              <button class="chip" type="button" data-cuisine="biryani" aria-pressed="false">Biryani</button>
+              <button class="chip" type="button" data-cuisine="seafood" aria-pressed="false">Seafood</button>
+            </div>
+            <p class="form-hint">Skip to discover restaurants across all cuisines.</p>
+            <input type="hidden" id="cuisine" name="cuisine" value=""/>
+          </div>
+
+          <!-- MIN RATING SLIDER -->
+          <div class="form-group">
+            <div class="rating-label-row">
+              <label class="form-label" for="min_rating">Minimum Rating</label>
+              <span class="rating-display" id="ratingVal" aria-live="polite">4.0</span>
+            </div>
+            <div class="rating-slider-row">
+              <span class="material-symbols-outlined rating-icon-low" aria-hidden="true">star_half</span>
+              <input
+                class="rating-slider"
+                type="range"
+                id="min_rating"
+                name="min_rating"
+                min="0"
+                max="5"
+                step="0.1"
+                value="4.0"
+                aria-label="Minimum rating"
+                aria-valuemin="0"
+                aria-valuemax="5"
+                aria-valuenow="4.0"
+              />
+              <span class="material-symbols-outlined rating-icon-high" aria-hidden="true">star</span>
+            </div>
+          </div>
+
+          <!-- EXTRAS TEXTAREA -->
+          <div class="form-group">
+            <label class="form-label" for="extras">Special Requests <span class="form-label-optional">(optional)</span></label>
+            <textarea
+              class="form-textarea"
+              id="extras"
+              name="extras"
+              rows="3"
+              placeholder="e.g., outdoor seating, quiet corner, romantic lighting, family-friendly..."
+              aria-label="Special requests or preferences"
+            ></textarea>
+          </div>
+
+          <!-- SUBMIT -->
+          <div class="form-submit-wrap">
+            <div class="submit-glow" aria-hidden="true"></div>
+            <button class="btn-submit" type="submit" id="submit-btn">
+              <span class="material-symbols-outlined">auto_awesome</span>
+              Find My Restaurants
+            </button>
+          </div>
+
+          <!-- Error message -->
+          <div id="form-error" class="form-error hidden" role="alert" aria-live="assertive"></div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="brand footer-brand">DineAI</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copy">© 2024 DineAI Gastronomy. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- VIEW 3: AI PROCESSING / LOADING                              -->
+  <!-- ============================================================ -->
+  <div id="view-processing" class="view">
+    <!-- Skeleton background grid -->
+    <div class="skeleton-bg" aria-hidden="true">
+      <div class="skeleton-grid">
+        <div class="skeleton-card">
+          <div class="skeleton-block tall shimmer"></div>
+          <div class="skeleton-block medium shimmer"></div>
+          <div class="skeleton-block short shimmer"></div>
+          <div class="skeleton-pills">
+            <div class="skeleton-pill shimmer"></div>
+            <div class="skeleton-pill shimmer"></div>
+          </div>
+        </div>
+        <div class="skeleton-card">
+          <div class="skeleton-block tall shimmer"></div>
+          <div class="skeleton-block medium short-line shimmer"></div>
+          <div class="skeleton-block short shimmer"></div>
+          <div class="skeleton-pills">
+            <div class="skeleton-pill shimmer"></div>
+          </div>
+        </div>
+        <div class="skeleton-card hidden-mobile">
+          <div class="skeleton-block tall shimmer"></div>
+          <div class="skeleton-block medium shimmer"></div>
+          <div class="skeleton-block short shimmer"></div>
+          <div class="skeleton-pills">
+            <div class="skeleton-pill shimmer"></div>
+            <div class="skeleton-pill shimmer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="processing-main">
+      <div class="processing-card glass-panel pulse-glow">
+        <!-- Atmospheric gradient -->
+        <div class="processing-glow-bg" aria-hidden="true"></div>
+
+        <!-- AI Spinner -->
+        <div class="ai-spinner" aria-hidden="true">
+          <div class="spin-ring ring-amber"></div>
+          <div class="spin-ring ring-teal ring-reverse"></div>
+          <span class="material-symbols-outlined spin-icon">neurology</span>
+        </div>
+
+        <h1 class="processing-title">Curating your experience</h1>
+
+        <!-- Cycling status messages -->
+        <div class="processing-messages" aria-live="polite" aria-label="Processing status">
+          <p class="msg msg-amber" id="msg1">Analyzing 1,200+ restaurants...</p>
+          <p class="msg msg-teal" id="msg2">Ranking by your preferences...</p>
+          <p class="msg msg-dim" id="msg3">Generating AI explanations...</p>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-track" role="progressbar" aria-label="Processing progress" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill">
+            <div class="progress-shimmer shimmer" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- VIEW 4: RESULTS                                              -->
+  <!-- ============================================================ -->
+  <div id="view-results" class="view">
+    <main class="results-main">
+      <!-- Results header -->
+      <section class="results-header">
+        <div class="results-eyebrow">
+          <span class="material-symbols-outlined fill-icon">auto_awesome</span>
+          <span>Curated For You</span>
+        </div>
+        <h1 class="results-title">Your AI Culinary Matches</h1>
+        <p class="results-subtitle" id="results-subtitle">Here are the top restaurants matching your preferences.</p>
+      </section>
+
+      <!-- Cards container -->
+      <div id="results-list" class="results-list" aria-live="polite" aria-label="Restaurant recommendations">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+
+      <!-- Error state -->
+      <div id="results-error" class="results-error hidden" role="alert">
+        <span class="material-symbols-outlined error-icon">sentiment_dissatisfied</span>
+        <h2 class="error-title">No Restaurants Found</h2>
+        <p class="error-body" id="error-body-text">We couldn't find restaurants matching your criteria. Try relaxing your filters.</p>
+        <button class="btn-pill error-retry-btn" id="try-again-btn">
+          <span class="material-symbols-outlined">arrow_back</span>
+          Try Different Preferences
+        </button>
+      </div>
+
+      <!-- Refine search CTA -->
+      <div class="refine-cta" id="refine-cta">
+        <button class="btn-ghost" id="refine-btn">
+          <span class="material-symbols-outlined">tune</span>
+          Refine Preferences
+        </button>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="brand footer-brand">DineAI</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Privacy</a>
+          <a href="#" class="footer-link">Terms</a>
+          <a href="#" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Press</a>
+        </div>
+        <div class="footer-copy">© 2024 DineAI Gastronomy. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

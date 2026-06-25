@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineAI - Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#005048",
+                      "primary-fixed": "#ffddb8",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#00201c",
+                      "tertiary-container": "#ff9571",
+                      "inverse-on-surface": "#313030",
+                      "surface-bright": "#3a3939",
+                      "secondary": "#4fdbc8",
+                      "secondary-container": "#04b4a2",
+                      "on-tertiary": "#5d1900",
+                      "primary-fixed-dim": "#ffb95f",
+                      "on-tertiary-fixed-variant": "#832600",
+                      "surface-container": "#201f1f",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "on-surface-variant": "#d8c3ad",
+                      "on-tertiary-container": "#7e2500",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary-fixed-dim": "#ffb59d",
+                      "tertiary-fixed": "#ffdbd0",
+                      "on-tertiary-fixed": "#390c00",
+                      "on-background": "#e5e2e1",
+                      "error-container": "#93000a",
+                      "background": "#131313",
+                      "on-surface": "#e5e2e1",
+                      "primary-container": "#f59e0b",
+                      "surface-tint": "#ffb95f",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353534",
+                      "on-primary": "#472a00",
+                      "on-primary-fixed": "#2a1700",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-low": "#1c1b1b",
+                      "surface": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary-fixed-variant": "#653e00",
+                      "inverse-primary": "#855300",
+                      "tertiary": "#ffbda8",
+                      "secondary-fixed": "#71f8e4",
+                      "on-primary-container": "#613b00",
+                      "on-secondary-container": "#003f38",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary": "#003731",
+                      "outline-variant": "#534434",
+                      "outline": "#a08e7a",
+                      "error": "#ffb4ab",
+                      "primary": "#ffc174",
+                      "surface-dim": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "sm": "8px",
+                      "2xl": "64px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "20px",
+                      "margin-desktop": "40px",
+                      "lg": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Outfit"
+                      ],
+                      "headline-lg-mobile": [
+                              "Outfit"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Outfit"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-ai": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Outfit"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-ai": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(26, 26, 46, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .linear-glow-top {
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .ai-border {
+            position: relative;
+        }
+        .ai-border::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #F59E0B, #04b4a2);
+            z-index: -1;
+            border-radius: inherit;
+            animation: pulse-border 3s ease-in-out infinite alternate;
+        }
+        @keyframes pulse-border {
+            0% { opacity: 0.5; filter: blur(4px); }
+            100% { opacity: 1; filter: blur(8px); }
+        }
+        .chip-active {
+            background-color: rgba(245, 158, 11, 0.2);
+            border-color: #F59E0B;
+            color: #F59E0B;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #F59E0B;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        input[type="range"]::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #F59E0B;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-sm">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-[1200px] mx-auto hidden md:flex">
+<div class="font-headline-md text-headline-md font-bold text-primary">DineAI</div>
+<div class="flex gap-lg items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Concierge</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Bookings</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-full font-label-caps text-label-caps scale-95 active:scale-90 transition-transform hover:bg-primary-fixed">Get Started</button>
+</div>
+<!-- Mobile Header Fallback -->
+<div class="flex md:hidden justify-center items-center h-16 border-b border-white/5">
+<div class="font-headline-md text-headline-md font-bold text-primary">DineAI</div>
+</div>
+</nav>
+<main class="flex-grow flex items-center justify-center py-xl px-margin-mobile md:px-margin-desktop">
+<div class="w-full max-w-2xl glass-card rounded-2xl p-lg md:p-xl linear-glow-top relative overflow-hidden">
+<!-- Decorative Glow Background inside card -->
+<div class="absolute -top-32 -right-32 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="mb-xl text-center">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Design Your Experience</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Let our AI concierge curate the perfect dining atmosphere for you.</p>
+</div>
+<form class="space-y-xl" id="preferenceForm">
+<!-- Location -->
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-sm tracking-wider uppercase">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">location_on</span>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-lg py-md pl-2xl pr-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md placeholder-on-surface-variant/50 transition-colors" placeholder="e.g., Bangalore, Delhi" type="text"/>
+</div>
+</div>
+<!-- Budget -->
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-sm tracking-wider uppercase">Budget Preference</label>
+<div class="flex bg-surface-container-low rounded-full p-1 border border-white/5 relative">
+<!-- Pill Background Slider (Controlled via JS for simple demo) -->
+<div class="absolute inset-y-1 w-1/3 bg-surface-container-highest rounded-full transition-all duration-300 ease-out border border-white/10 linear-glow-top shadow-[0_0_15px_rgba(245,158,11,0.1)]" id="budgetIndicator"></div>
+<button class="relative z-10 flex-1 py-sm text-center font-label-sm text-label-sm font-medium text-on-surface transition-colors budget-btn" onclick="selectBudget(0)" type="button">Low</button>
+<button class="relative z-10 flex-1 py-sm text-center font-label-sm text-label-sm font-medium text-on-surface-variant transition-colors budget-btn" onclick="selectBudget(1)" type="button">Medium</button>
+<button class="relative z-10 flex-1 py-sm text-center font-label-sm text-label-sm font-medium text-on-surface-variant transition-colors budget-btn" onclick="selectBudget(2)" type="button">High</button>
+</div>
+</div>
+<!-- Cuisine Chips -->
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-sm tracking-wider uppercase">Cuisine Vibes</label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Italian</button>
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip chip-active" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Japanese</button>
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Modern Indian</button>
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Continental</button>
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Mediterranean</button>
+<button class="px-md py-sm rounded-full border border-white/10 bg-white/5 font-label-sm text-label-sm text-on-surface-variant hover:bg-white/10 transition-colors cuisine-chip" onclick="this.classList.toggle('chip-active'); this.classList.toggle('text-on-surface-variant')" type="button">Fusion</button>
+</div>
+</div>
+<!-- Min Rating -->
+<div>
+<div class="flex justify-between items-center mb-sm">
+<label class="block font-label-caps text-label-caps text-outline tracking-wider uppercase">Minimum Rating</label>
+<span class="font-headline-md text-headline-md text-primary font-bold" id="ratingVal">4.2</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<input class="w-full h-1 bg-surface-container-highest rounded-full appearance-none outline-none focus:outline-none" max="5.0" min="3.0" oninput="document.getElementById('ratingVal').innerText = this.value" step="0.1" type="range" value="4.2"/>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Extras -->
+<div>
+<label class="block font-label-caps text-label-caps text-outline mb-sm tracking-wider uppercase">Special Requests</label>
+<textarea class="w-full bg-surface-container-low border border-white/10 rounded-lg p-md text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container font-body-md text-body-md placeholder-on-surface-variant/50 transition-colors resize-none" placeholder="e.g., outdoor seating, quiet corner, romantic lighting..." rows="3"></textarea>
+</div>
+<!-- Submit -->
+<div class="pt-md relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary-container to-secondary-container rounded-lg blur opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+<button class="relative w-full py-md bg-primary-container text-on-primary-container font-headline-md text-[18px] font-bold rounded-lg shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.5)] transition-all flex justify-center items-center gap-sm active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Find Restaurants
+                    </button>
+</div>
+</form>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest border-t border-white/5 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-md max-w-[1200px] mx-auto">
+<div class="font-headline-md text-headline-md text-primary opacity-80 hover:opacity-100 transition-opacity">DineAI</div>
+<div class="flex gap-md font-label-sm text-label-sm">
+<a class="text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Contact</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Press</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">© 2024 DineAI Gastronomy. All rights reserved.</div>
+</div>
+</footer>
+<script>
+        function selectBudget(index) {
+            const indicator = document.getElementById('budgetIndicator');
+            const btns = document.querySelectorAll('.budget-btn');
+            
+            // Move indicator
+            indicator.style.left = `${(index * 33.33) + 0.5}%`;
+            
+            // Update text colors
+            btns.forEach((btn, i) => {
+                if(i === index) {
+                    btn.classList.remove('text-on-surface-variant');
+                    btn.classList.add('text-on-surface');
+                } else {
+                    btn.classList.remove('text-on-surface');
+                    btn.classList.add('text-on-surface-variant');
+                }
+            });
+        }
+        // Initialize
+        selectBudget(0);
+    </script>
+</body></html>

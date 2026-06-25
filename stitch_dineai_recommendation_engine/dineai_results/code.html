@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineAI - Curated Recommendations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Inter:ital,wght@0,400;0,500;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed-variant": "#005048",
+                      "primary-fixed": "#ffddb8",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#00201c",
+                      "tertiary-container": "#ff9571",
+                      "inverse-on-surface": "#313030",
+                      "surface-bright": "#3a3939",
+                      "secondary": "#4fdbc8",
+                      "secondary-container": "#04b4a2",
+                      "on-tertiary": "#5d1900",
+                      "primary-fixed-dim": "#ffb95f",
+                      "on-tertiary-fixed-variant": "#832600",
+                      "surface-container": "#201f1f",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "on-surface-variant": "#d8c3ad",
+                      "on-tertiary-container": "#7e2500",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary-fixed-dim": "#ffb59d",
+                      "tertiary-fixed": "#ffdbd0",
+                      "on-tertiary-fixed": "#390c00",
+                      "on-background": "#e5e2e1",
+                      "error-container": "#93000a",
+                      "background": "#131313",
+                      "on-surface": "#e5e2e1",
+                      "primary-container": "#f59e0b",
+                      "surface-tint": "#ffb95f",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#353534",
+                      "on-primary": "#472a00",
+                      "on-primary-fixed": "#2a1700",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-container-low": "#1c1b1b",
+                      "surface": "#131313",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary-fixed-variant": "#653e00",
+                      "inverse-primary": "#855300",
+                      "tertiary": "#ffbda8",
+                      "secondary-fixed": "#71f8e4",
+                      "on-primary-container": "#613b00",
+                      "on-secondary-container": "#003f38",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary": "#003731",
+                      "outline-variant": "#534434",
+                      "outline": "#a08e7a",
+                      "error": "#ffb4ab",
+                      "primary": "#ffc174",
+                      "surface-dim": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "40px",
+                      "sm": "8px",
+                      "2xl": "64px",
+                      "base": "4px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "gutter": "20px",
+                      "margin-desktop": "40px",
+                      "lg": "24px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Outfit"],
+                      "headline-lg-mobile": ["Outfit"],
+                      "body-lg": ["Inter"],
+                      "display": ["Outfit"],
+                      "label-caps": ["Inter"],
+                      "body-ai": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Outfit"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                      "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                      "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                      "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                      "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                      "body-ai": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                      "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                      "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-card {
+            background-color: rgba(32, 31, 31, 0.6); /* surface-container */
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .linear-glow-top {
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+        }
+        .ai-pulse-bg {
+            animation: aiPulse 3s infinite alternate ease-in-out;
+        }
+        @keyframes aiPulse {
+            0% { background-color: rgba(255, 193, 116, 0.05); } /* primary */
+            100% { background-color: rgba(79, 219, 200, 0.05); } /* secondary */
+        }
+        
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: staggerFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes staggerFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .toggle-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out;
+        }
+        .toggle-content.open {
+            grid-template-rows: 1fr;
+        }
+        .toggle-inner {
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface/60 backdrop-blur-xl sticky top-0 w-full z-50 border-b border-white/10 shadow-sm">
+<nav class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-[1200px] mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                DineAI
+            </div>
+<ul class="hidden md:flex gap-lg items-center">
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Explore</a></li>
+<li><a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Concierge</a></li>
+<li><a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Bookings</a></li>
+</ul>
+<button class="hidden md:block bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-label-sm text-label-sm font-bold scale-95 active:scale-90 transition-transform linear-glow-top">
+                Get Started
+            </button>
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow w-full max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop py-xl flex flex-col gap-xl">
+<!-- Header Section -->
+<section class="flex flex-col gap-sm text-center md:text-left">
+<div class="inline-flex items-center gap-2 text-secondary justify-center md:justify-start">
+<span class="material-symbols-outlined fill text-sm">auto_awesome</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary">Curated For You</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">
+                Your AI Culinary Matches
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                Based on your recent cravings for authentic North Indian flavors and preference for intimate dining settings.
+            </p>
+</section>
+<!-- Ranked Results -->
+<div class="flex flex-col gap-lg">
+<!-- Card 1 -->
+<article class="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row stagger-item linear-glow-top" style="animation-delay: 0.1s;">
+<div class="relative w-full md:w-2/5 h-64 md:h-auto">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A highly detailed, cinematic photograph of a luxurious North Indian fine dining restaurant interior. The scene is illuminated by warm, low-key lighting with glowing amber accents against deep charcoal walls. Elegant brass utensils sit on dark wooden tables alongside a beautifully plated dish of rich, creamy curry. The atmosphere is sophisticated, moody, and exclusive, reflecting a modern glassmorphic aesthetic with high contrast and rich textures." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDe3wt47ZwyvH3te9CTw0c5y3KrHE3_KRPy7s2phv9MDDPX_9aFv95aHkNdQBETD04J08WoGxnF4T0I5YDBNWgmQ4pVs2PU7kNAGL0TDH-1I-f4B2TO_O6_StzclkB5AmnT5u2aD8nDU9D-cDsHntIGRHnK8I4D0h-51p1Bua8PAarfeKzCsbyS8wiP_pCJuKKmo_r9iXnXAiZT85_G0NLvWds9ohQik82Wo_MnRhMh0D6ntoyoyRusl_YROHgEVLkZxT6gErY8Lv8')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest/80 to-transparent md:hidden"></div>
+<div class="absolute top-md left-md bg-background/80 backdrop-blur-md border border-white/10 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+<span class="font-headline-md text-headline-md font-bold text-primary">1</span>
+</div>
+</div>
+<div class="p-md md:p-lg flex flex-col gap-md w-full md:w-3/5">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">The Gilded Plate</h2>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-white/5 border border-white/10 rounded-full px-3 py-1 font-label-sm text-label-sm text-on-surface-variant">North Indian</span>
+<span class="bg-white/5 border border-white/10 rounded-full px-3 py-1 font-label-sm text-label-sm text-on-surface-variant">Fine Dining</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined fill text-primary" style="font-size: 16px;">star</span>
+<span class="font-bold text-on-surface">4.8</span>
+<span>/ 5.0</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">payments</span>
+<span>₹2,500 for two</span>
+</div>
+</div>
+<!-- AI Callout Container -->
+<div class="relative mt-2 p-[1px] rounded-lg bg-gradient-to-r from-primary/30 to-secondary/30 overflow-hidden">
+<div class="ai-pulse-bg absolute inset-0"></div>
+<div class="relative bg-surface-container/90 backdrop-blur-md rounded-lg p-md flex flex-col gap-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">psychology</span>
+<p class="font-body-ai text-body-ai text-on-surface-variant italic">
+                                    "Perfect for your craving of North Indian cuisine. Their signature Dal Makhani is slow-cooked for 24 hours, matching your preference for authentic, rich flavors."
+                                </p>
+</div>
+<!-- Toggle Button -->
+<button class="flex items-center justify-between w-full mt-2 pt-2 border-t border-white/5 text-primary hover:text-primary-fixed transition-colors font-label-sm text-label-sm group toggle-btn">
+<span>Why this?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-hover:translate-y-0.5" style="font-size: 18px;">expand_more</span>
+</button>
+<!-- Toggle Content -->
+<div class="toggle-content">
+<div class="toggle-inner">
+<p class="font-body-sm text-body-sm text-on-surface-variant pt-3 opacity-80 leading-relaxed">
+                                        This establishment scores highest in our contextual analysis for 'intimate ambience'. Furthermore, real-time sentiment analysis of recent diner reviews highlights exceptional service quality, perfectly aligning with your 'premium concierge' dining tier requirement.
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="glass-card rounded-xl overflow-hidden flex flex-col md:flex-row stagger-item linear-glow-top" style="animation-delay: 0.2s;">
+<div class="relative w-full md:w-2/5 h-64 md:h-auto">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A moody, high-end culinary photograph showing a sleek dining table set with modern tableware. Warm, directional lighting highlights a delicately plated Indian fusion dish, creating deep shadows and glowing amber tones. The background is slightly blurred, revealing an elegant restaurant setting with subtle teal light leaks, conveying an exclusive and intelligent gastronomic experience." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnPQRNzxUb-49srtcQHwIsVVH9RQQo0EIcSueo2c0XR6BAt5whftPPkrLi8jYOG1dD3c_we93_79emfvI1OJOdYQznq3fDFk4_uLeFS2rFzJXQd5N87w5yqp7gr5ZhOZQjgejqsigSXk34Q3JBBul0tH-fXT8HVPI0GvBniwGKITyxSetM1MzSVZersKjoq5oe0sIN-aQhAxa2dDwH9wIHSISdRhysMzhoRncTmdX_5gQ7bQ0YEILfoFWjK72484U28NmLmQ81JDI')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-highest/80 to-transparent md:hidden"></div>
+<div class="absolute top-md left-md bg-background/80 backdrop-blur-md border border-white/10 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">2</span>
+</div>
+</div>
+<div class="p-md md:p-lg flex flex-col gap-md w-full md:w-3/5">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Saffron Vault</h2>
+<div class="flex flex-wrap gap-2 mt-2">
+<span class="bg-white/5 border border-white/10 rounded-full px-3 py-1 font-label-sm text-label-sm text-on-surface-variant">Awadhi</span>
+<span class="bg-white/5 border border-white/10 rounded-full px-3 py-1 font-label-sm text-label-sm text-on-surface-variant">Heritage</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined fill text-primary" style="font-size: 16px;">star</span>
+<span class="font-bold text-on-surface">4.6</span>
+<span>/ 5.0</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">payments</span>
+<span>₹3,200 for two</span>
+</div>
+</div>
+<div class="relative mt-2 p-[1px] rounded-lg bg-gradient-to-r from-primary/30 to-secondary/30 overflow-hidden">
+<div class="ai-pulse-bg absolute inset-0"></div>
+<div class="relative bg-surface-container/90 backdrop-blur-md rounded-lg p-md flex flex-col gap-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary mt-1">psychology</span>
+<p class="font-body-ai text-body-ai text-on-surface-variant italic">
+                                    "A highly rated alternative known for its Dum Pukht style. It offers a slightly more formal environment than your top pick."
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full py-xl border-t border-white/5 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-md max-w-[1200px] mx-auto opacity-80 hover:opacity-100 transition-opacity">
+<div class="font-headline-md text-headline-md text-primary">
+                DineAI
+            </div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                © 2024 DineAI Gastronomy. All rights reserved.
+            </div>
+<ul class="flex gap-4">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+</footer>
+<script>
+        // Simple script to handle 'Why this?' toggle
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('.material-symbols-outlined');
+                
+                content.classList.toggle('open');
+                
+                if(content.classList.contains('open')) {
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    </script>
+</body></html>

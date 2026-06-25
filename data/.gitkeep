@@ -1,0 +1,2 @@
+# This directory stores the preprocessed Zomato dataset cache.
+# zomato_processed.pkl is auto-generated on first run and ignored by git.
