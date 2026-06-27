@@ -9,11 +9,7 @@
 // ================================================================
 // 1. CONSTANTS & CONFIG
 // ================================================================
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-  ? 'http://localhost:8000' 
-  : 'https://your-app.up.railway.app'; // <--- Replace with your actual Railway URL
-
-const API_ENDPOINT = `${API_BASE}/recommend`;
+const API_ENDPOINT = '/recommend';
 
 // ================================================================
 // 2. DOM REFERENCES
