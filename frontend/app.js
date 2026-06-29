@@ -9,7 +9,12 @@
 // ================================================================
 // 1. CONSTANTS & CONFIG
 // ================================================================
-const API_ENDPOINT = '/recommend';
+// TODO: Replace this URL with your actual Railway backend URL after deploying.
+// Format: 'https://<your-app-name>.up.railway.app/recommend'
+// The relative path '/recommend' only works when the backend serves the frontend
+// from the same origin. Since Vercel and Railway are separate origins, an
+// absolute URL is required.
+const API_ENDPOINT = 'https://YOUR-RAILWAY-APP.up.railway.app/recommend';
 
 // ================================================================
 // 2. DOM REFERENCES
