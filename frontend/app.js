@@ -14,40 +14,40 @@
 // The relative path '/recommend' only works when the backend serves the frontend
 // from the same origin. Since Vercel and Railway are separate origins, an
 // absolute URL is required.
-const API_ENDPOINT = 'https://YOUR-RAILWAY-APP.up.railway.app/recommend';
+const API_ENDPOINT = 'https://dineai-recommendations-production.up.railway.app/recommend';
 
 // ================================================================
 // 2. DOM REFERENCES
 // ================================================================
 const views = {
-  home:        document.getElementById('view-home'),
+  home: document.getElementById('view-home'),
   preferences: document.getElementById('view-preferences'),
-  processing:  document.getElementById('view-processing'),
-  results:     document.getElementById('view-results'),
+  processing: document.getElementById('view-processing'),
+  results: document.getElementById('view-results'),
 };
 
 // Nav
 const navLinks = document.querySelectorAll('.nav-link[data-view]');
-const navCTA   = document.getElementById('nav-cta');
+const navCTA = document.getElementById('nav-cta');
 const brandLogo = document.getElementById('brand-logo');
 
 // Home
-const heroSearchBtn   = document.getElementById('hero-search-btn');
+const heroSearchBtn = document.getElementById('hero-search-btn');
 const heroSearchInput = document.getElementById('hero-search-input');
 
 // Form
-const prefForm     = document.getElementById('preferenceForm');
-const locationSel  = document.getElementById('location');
+const prefForm = document.getElementById('preferenceForm');
+const locationSel = document.getElementById('location');
 const budgetHidden = document.getElementById('budget');
 const cuisineHidden = document.getElementById('cuisine');
 const ratingSlider = document.getElementById('min_rating');
-const ratingVal    = document.getElementById('ratingVal');
-const extrasTA     = document.getElementById('extras');
-const submitBtn    = document.getElementById('submit-btn');
-const formError    = document.getElementById('form-error');
+const ratingVal = document.getElementById('ratingVal');
+const extrasTA = document.getElementById('extras');
+const submitBtn = document.getElementById('submit-btn');
+const formError = document.getElementById('form-error');
 
 // Budget
-const budgetBtns      = document.querySelectorAll('.budget-btn');
+const budgetBtns = document.querySelectorAll('.budget-btn');
 const budgetIndicator = document.getElementById('budgetIndicator');
 
 // Cuisine chips
@@ -57,19 +57,19 @@ const cuisineChips = document.querySelectorAll('.chip[data-cuisine]');
 const processingMsgs = document.querySelectorAll('.msg');
 
 // Results
-const resultsList    = document.getElementById('results-list');
-const resultsError   = document.getElementById('results-error');
+const resultsList = document.getElementById('results-list');
+const resultsError = document.getElementById('results-error');
 const resultsSubtitle = document.getElementById('results-subtitle');
-const errorBodyText  = document.getElementById('error-body-text');
-const tryAgainBtn    = document.getElementById('try-again-btn');
-const refineBtn      = document.getElementById('refine-btn');
-const refineCta      = document.getElementById('refine-cta');
+const errorBodyText = document.getElementById('error-body-text');
+const tryAgainBtn = document.getElementById('try-again-btn');
+const refineBtn = document.getElementById('refine-btn');
+const refineCta = document.getElementById('refine-cta');
 
 // ================================================================
 // 3. STATE
 // ================================================================
 let currentView = 'home';
-let selectedBudget  = 'low';
+let selectedBudget = 'low';
 let selectedCuisines = [];
 let msgCycleTimer = null;
 let currentMsgIndex = 0;
@@ -136,7 +136,7 @@ function initParticles() {
   wrap.appendChild(canvas);
 
   function resize() {
-    canvas.width  = wrap.offsetWidth;
+    canvas.width = wrap.offsetWidth;
     canvas.height = wrap.offsetHeight;
   }
   window.addEventListener('resize', resize);
@@ -145,25 +145,25 @@ function initParticles() {
   class Particle {
     constructor() { this.reset(); }
     reset() {
-      this.x     = Math.random() * canvas.width;
-      this.y     = Math.random() * canvas.height;
-      this.size  = Math.random() * 1.8 + 0.4;
-      this.vx    = (Math.random() - 0.5) * 0.4;
-      this.vy    = (Math.random() - 0.5) * 0.4;
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 1.8 + 0.4;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
       this.alpha = Math.random() * 0.6 + 0.2;
       this.color = Math.random() > 0.5 ? '#F59E0B' : '#04b4a2';
     }
     update() {
       this.x += this.vx;
       this.y += this.vy;
-      if (this.x > canvas.width)  this.x = 0;
-      if (this.x < 0)             this.x = canvas.width;
+      if (this.x > canvas.width) this.x = 0;
+      if (this.x < 0) this.x = canvas.width;
       if (this.y > canvas.height) this.y = 0;
-      if (this.y < 0)             this.y = canvas.height;
+      if (this.y < 0) this.y = canvas.height;
     }
     draw() {
       ctx.globalAlpha = this.alpha;
-      ctx.fillStyle   = this.color;
+      ctx.fillStyle = this.color;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
       ctx.fill();
@@ -334,11 +334,11 @@ function initForm() {
 
     // Build payload
     const payload = {
-      location:   locationSel.value,
-      budget:     selectedBudget,
-      cuisine:    selectedCuisines.join(','),   // all selected chips, comma-joined ('' if none)
+      location: locationSel.value,
+      budget: selectedBudget,
+      cuisine: selectedCuisines.join(','),   // all selected chips, comma-joined ('' if none)
       min_rating: parseFloat(ratingSlider.value),
-      extras:     extrasTA.value.trim(),
+      extras: extrasTA.value.trim(),
     };
 
     // Show processing screen
@@ -374,12 +374,12 @@ function starIcon(filled = true) {
 
 /** Build star rating display (0–5 scale, show up to 5 stars) */
 function buildStars(rating) {
-  const full  = Math.floor(rating);
+  const full = Math.floor(rating);
   const hasHalf = (rating % 1) >= 0.5;
   const empty = 5 - full - (hasHalf ? 1 : 0);
   let html = '';
-  for (let i = 0; i < full;  i++) html += starIcon(true);
-  if (hasHalf)                     html += `<span class="material-symbols-outlined star-icon" style="font-variation-settings:'FILL' 0">star_half</span>`;
+  for (let i = 0; i < full; i++) html += starIcon(true);
+  if (hasHalf) html += `<span class="material-symbols-outlined star-icon" style="font-variation-settings:'FILL' 0">star_half</span>`;
   for (let i = 0; i < empty; i++) html += `<span class="material-symbols-outlined star-icon" style="font-variation-settings:'FILL' 0;opacity:0.3">star</span>`;
   return html;
 }
@@ -506,7 +506,7 @@ function renderResults(data, payload) {
       const icon = btn.querySelector('.material-symbols-outlined');
       const isSaved = icon.textContent === 'bookmark';
       icon.textContent = isSaved ? 'bookmark_border' : 'bookmark';
-      icon.style.color  = isSaved ? '' : 'var(--primary)';
+      icon.style.color = isSaved ? '' : 'var(--primary)';
     });
   });
 }
